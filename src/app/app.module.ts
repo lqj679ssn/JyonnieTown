@@ -1,16 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppComponent } from './app.component';
+import { AppPage } from './app.page';
+import {AppItemComponent} from '../component/appItem.component';
+import {AppDepotService} from '../service/appDepot.service';
+import {ApiService} from '../service/api.service';
+import {RequestService} from '../service/request.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppPage,
+    AppItemComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    AppDepotService,
+    RequestService,
+    ApiService,
+  ],
+  bootstrap: [AppPage]
 })
 export class AppModule { }

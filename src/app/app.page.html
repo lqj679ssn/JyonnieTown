@@ -1,0 +1,28 @@
+<nav class="nav">
+  <div class="nav-header">
+    <div class="nav-header__title">忠义堂</div>
+    <div class="nav-header__bar"></div>
+  </div>
+
+  <div class="nav-menu" *ngFor="let category of appDepot.categories">
+    <div class="nav-menu__section">
+      <div class="nav-menu__section__header">
+        <div class="nav-menu__section__header__title">{{category.cn}}</div>
+        <div class="nav-menu__section__header__entitle">{{category.en}}</div>
+      </div>
+      <app-item *ngFor="let app of appDepot.apps[category.en]" [app]="app" (click)="select(app)"></app-item>
+    </div>
+  </div>
+</nav>
+
+<div class="app-main">
+  <div class="app-main__title-box">
+    <div class="app-main__title-box__app-name-box">
+      <div class="app-main__title-box__app-name-box__char-box" *ngFor="let char of selectedApp?.chars">
+        <div class="app-main__title-box__app-name-box__char-box__pinyin">{{char.py}}</div>
+        <div class="app-main__title-box__app-name-box__char-box__char">{{char.char}}</div>
+      </div>
+    </div>
+    <div class="app-main__title-box__nickname">{{selectedApp?.hero.nickname}}·{{selectedApp?.hero.hero}}</div>
+  </div>
+</div>

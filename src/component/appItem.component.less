@@ -1,0 +1,130 @@
+@app-item-height: 74px;
+
+.main {
+  position: relative;
+  width: 100%;
+  height: @app-item-height;
+  //border-top: 1px solid #707070;
+
+  .bar {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: calc(~'75% - 22.5px');
+    border-top: 1px solid #707070;
+  }
+
+  .bg {
+    background: none;
+  }
+
+  @item-h-margin: 23px;
+  .app-item {
+    width: calc(~'100% - 2 * @{item-h-margin}');
+    margin-left: @item-h-margin;
+    display: flex;
+
+    @logo-size: 50px;
+
+    .app-item__logo-box {
+      width: @logo-size;
+      height: @app-item-height;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+      .app-item__logo-box__logo {
+        width: @logo-size;
+        height: @logo-size;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .app-item__logo-box__logo__text {
+          color: white;
+          font-size: 26px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    @text-box-margin-left: 13px;
+    .app-item__text-box {
+      position: relative;
+      margin-left: @text-box-margin-left;
+      width: calc(~'100% - @{logo-size} - @{text-box-margin-left}');
+      height: @app-item-height;
+      padding: 10px 0;
+      display: flex;
+      flex-direction: column;
+
+      @main-line-height: 30px;
+      .app-item__text-box__main-line {
+        display: flex;
+        height: @main-line-height;
+        width: 100%;
+
+        .app-item__text-box__main-line__nickname {
+          padding: 0 10px;
+          background: white;
+          font-size: 16px;
+          border-radius: @main-line-height / 3;
+          line-height: @main-line-height;
+          vertical-align: middle;
+        }
+
+        @app-name-margin-left: 5px;
+        .app-item__text-box__main-line__app-name {
+          margin-left: @app-name-margin-left;
+          color: white;
+          font-size: 20px;
+          width: fit-content;
+        }
+      }
+
+      .app-item__text-box__desc {
+        width: 100%;
+        font-size: 14px;
+        color: white;
+        opacity: 0.7;
+        margin-top: 4px;
+      }
+    }
+  }
+}
+
+.main:hover {
+  .bar {
+    width: 0;
+  }
+
+  .bg {
+    background: #FFFFFF;
+    box-shadow: 0 3px 10px #363636;
+  }
+
+  .app-item {
+    .app-item__text-box {
+      .app-item__text-box__main-line {
+        .app-item__text-box__main-line__nickname {
+          background: #525252;
+          color: white;
+        }
+
+        .app-item__text-box__main-line__app-name {
+          color: #525252;
+        }
+      }
+
+      .app-item__text-box__desc {
+        color: #525252;
+      }
+    }
+  }
+}
+
+.main--selected {
+  .bg {
+    background: white;
+  }
+}
